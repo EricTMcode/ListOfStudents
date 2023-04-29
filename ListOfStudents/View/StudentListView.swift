@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  StudentListView.swift
 //  ListOfStudents
 //
 //  Created by Eric on 29/04/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct StudentListView: View {
     let students = ["Holt B.",
                     "Luke B.",
                     "Michael B.",
@@ -62,12 +62,15 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(students, id: \.self) { student in
-                    HStack {
-                        Image(systemName: "swift")
-                            .foregroundColor(.orange)
-                        Text(student)
+                    NavigationLink {
+                        DetailView(studentName: student)
+                    } label: {
+                        HStack {
+                            Image(systemName: "swift")
+                                .foregroundColor(.orange)
+                            Text(student)
+                        }
                     }
-                    
                 }
             }
             .font(.title2)
@@ -77,8 +80,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct StudentListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        StudentListView()
     }
 }
