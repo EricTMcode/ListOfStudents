@@ -65,4 +65,10 @@ class StudentsViewModel: ObservableObject {
             studentArray.append(Student(id: UUID().uuidString, name: student))
         }
     }
+    
+    func saveStudent(student: Student) {
+        var newStudent = student
+        newStudent.id = UUID().uuidString
+        studentArray.append(newStudent)
+    }
 }

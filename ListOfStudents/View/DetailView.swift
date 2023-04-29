@@ -31,6 +31,7 @@ struct DetailView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
+                    studentVM.saveStudent(student: student)
                     dismiss()
                 }
             }
