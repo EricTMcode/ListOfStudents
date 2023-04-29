@@ -25,6 +25,7 @@ struct StudentListView: View {
                         }
                     }
                 }
+                .onDelete(perform: studentsVM.deleteStudent)
             }
             .font(.title2)
             .listStyle(.plain)

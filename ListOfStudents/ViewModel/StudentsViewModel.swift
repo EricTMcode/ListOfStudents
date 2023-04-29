@@ -77,4 +77,8 @@ class StudentsViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteStudent(indexSet: IndexSet) {
+        studentArray.remove(atOffsets: indexSet)
+    }
 }
