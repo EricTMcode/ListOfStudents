@@ -81,4 +81,8 @@ class StudentsViewModel: ObservableObject {
     func deleteStudent(indexSet: IndexSet) {
         studentArray.remove(atOffsets: indexSet)
     }
+    
+    func moveStudent(fromOffsets: IndexSet, toOffset: Int) {
+        studentArray.move(fromOffsets: fromOffsets, toOffset: toOffset)
+    }
 }
