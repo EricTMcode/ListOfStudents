@@ -28,6 +28,18 @@ struct StudentListView: View {
             .font(.title2)
             .listStyle(.plain)
             .navigationTitle("Swifters!")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }
     }
 }

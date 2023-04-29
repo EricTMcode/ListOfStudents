@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @EnvironmentObject var studentVM: StudentsViewModel
+    @Environment(\.dismiss) var dismiss
     @State var student: Student
     
     var body: some View {
@@ -22,12 +23,28 @@ struct DetailView: View {
         }
         .padding()
         .font(.title)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Save") {
+                    dismiss()
+                }
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(student: Student(name: "Eric TM Code."))
-            .environmentObject(StudentsViewModel())
+        NavigationStack {
+            DetailView(student: Student(name: "Eric TM Code."))
+                .environmentObject(StudentsViewModel())
+        }
     }
 }
