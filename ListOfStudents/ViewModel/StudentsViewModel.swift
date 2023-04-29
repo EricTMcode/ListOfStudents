@@ -67,8 +67,14 @@ class StudentsViewModel: ObservableObject {
     }
     
     func saveStudent(student: Student) {
-        var newStudent = student
-        newStudent.id = UUID().uuidString
-        studentArray.append(newStudent)
+        if student.id == nil {
+            var newStudent = student
+            newStudent.id = UUID().uuidString
+            studentArray.append(newStudent)
+        } else {
+            if let index = studentArray.firstIndex(where: { $0.id == student.id }) {
+                studentArray[index] = student
+            }
+        }
     }
 }
