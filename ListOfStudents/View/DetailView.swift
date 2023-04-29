@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State var studentName: String
+    @EnvironmentObject var studentVM: StudentsViewModel
+    @State var student: Student
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("Developer's Name:")
                 .bold()
-            TextField("Enter student name", text: $studentName)
+            TextField("Enter student name", text: $student.name)
                 .textFieldStyle(.roundedBorder)
             
             Spacer()
@@ -26,6 +27,7 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(studentName: "Eric TM Code.")
+        DetailView(student: Student(name: "Eric TM Code."))
+            .environmentObject(StudentsViewModel())
     }
 }

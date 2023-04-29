@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct StudentListView: View {
+    @EnvironmentObject var studentsVM: StudentsViewModel
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(students, id: \.self) { student in
+                ForEach(studentsVM.studentArray) { student in
                     NavigationLink {
-                        DetailView(studentName: student)
+                        DetailView(student: student)
                     } label: {
                         HStack {
                             Image(systemName: "swift")
                                 .foregroundColor(.orange)
-                            Text(student)
+                            Text(student.name)
                         }
                     }
                 }
@@ -34,5 +35,6 @@ struct StudentListView: View {
 struct StudentListView_Previews: PreviewProvider {
     static var previews: some View {
         StudentListView()
+            .environmentObject(StudentsViewModel())
     }
 }
