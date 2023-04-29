@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StudentListView: View {
     @EnvironmentObject var studentsVM: StudentsViewModel
+    @State private var sheetIsPresented = false
     
     var body: some View {
         NavigationStack {
@@ -34,10 +35,15 @@ struct StudentListView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        
+                        sheetIsPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
                     }
+                }
+            }
+            .sheet(isPresented: $sheetIsPresented) {
+                NavigationStack {
+                    DetailView(student: Student())
                 }
             }
         }
