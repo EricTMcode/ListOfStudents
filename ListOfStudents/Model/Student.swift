@@ -11,7 +11,8 @@ enum Year: CaseIterable, Codable {
     case freshman, sophomore, junior, senior
 }
 
-struct Student: Codable {
+struct Student: Codable, Identifiable {
+    var id: String?
     var name = ""
     var major = ""
     var homeTown = ""
