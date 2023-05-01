@@ -19,6 +19,29 @@ struct DetailView: View {
             TextField("Enter student name", text: $student.name)
                 .textFieldStyle(.roundedBorder)
             
+            Text("Major:")
+                .bold()
+            TextField("Enter major", text: $student.major)
+                .textFieldStyle(.roundedBorder)
+            
+            Text("Hometown:")
+                .bold()
+            TextField("Enter hometown", text: $student.homeTown)
+                .textFieldStyle(.roundedBorder)
+            
+            HStack {
+                Text("Year")
+                    .bold()
+                
+                Spacer()
+                
+                Picker("Select Year", selection: $student.year) {
+                    ForEach(Year.allCases, id: \.self) { year in
+                        Text(year.rawValue.capitalized)
+                    }
+                }
+            }
+            
             Spacer()
         }
         .padding()
